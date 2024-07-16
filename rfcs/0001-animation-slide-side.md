@@ -6,31 +6,18 @@ author: Ciflire
 
 # Summary
 
-Trying to normalize the side parameter given to animation
+This RFC aims to agree on a rule for forced side option of the slide animation style
 
 # Motivation
 
-I felt like the animation side is not consistent. To give an example I will be
-using my configuration file:
-
-```
-animation=windowsIn, 1,2,windowIn, slide bottom
-animation=windowsOut,1,2,windowOut, slide bottom
-```
-
-These two animation have the same side given, but one gives an animation that
-slides **from** bottom **to** the center and the other gives an animation that
-slides **from** center **to** bottom
-
-This bothered me, so I decided i would make an RFC to get feedback on that, to
-know if I am the only thinking that or not as I could get no feedback in the
-discord.
+The way the animation `slide` is used feels inconsistent in two ways at the moment i'm writing this:
+- First, it describes a side that can be the side by which the animation starts as well as its end. For example the keyword `bottom` used for animation `windowsIn` will move the window **from** the bottom to the desired position and for the animation `windowsOut` the window will be slided to the bottom of the screen
+- Secondly, following that logic, the keyword `bottom` would be used to make the window pop from the bottom and close sliding to the bottom. The same keyword is then used for two different visual results.
+This RFC will allow to write the documentation as clear as possible without having to detail each case, or by try and fail by the user
 
 # Detailed design
 
-The other conception of it would be to think of a vector which to me feels more
-intuitive when thinking of animation, and movement. Instead of thinking of a
-fixed size.
+The new design for the forced side
 
 # Examples and Interactions
 
@@ -47,8 +34,7 @@ Where `top` and `bottom` give the direction of the window when going in or out.
 
 People would have to change this in their entire config, could also be
 counterintuitive to other people just as the way it is designed today is
-counterintuitive to me
-Having to change the actual implementation
+counterintuitive to me Having to change the actual implementation
 
 # Alternatives
 
